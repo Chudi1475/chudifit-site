@@ -1,4 +1,4 @@
-/* ChudiFit — silver / red / black palette */
+﻿/* ChudiFit: silver / red / black palette */
 
 :root {
   /* Silver tones (main) */
@@ -144,7 +144,7 @@ section.theme-dark em { color: #fff; }
   padding: 12px 14px;
 }
 .btn-ghost::after {
-  content: " ›"; margin-left: 1px;
+  content: " \203A"; margin-left: 1px;
   transition: transform 0.25s;
   display: inline-block;
   color: var(--red);

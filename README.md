@@ -1,6 +1,6 @@
 # ChudiFit
 
-Landing page for ChudiFit — 1-on-1 online coaching for tall athletes 6'2"+.
+Landing page for ChudiFit. 1-on-1 online coaching for tall athletes 6'2"+.
 
 ## Live
 Deployed on GitHub Pages: https://chudi1475.github.io/chudifit-site/
@@ -19,9 +19,9 @@ python -m http.server 8000
 then visit http://localhost:8000
 
 ## Files
-- `index.html` — page structure and content
-- `styles.css` — styling (dark, premium athletic theme)
-- `script.js` — mobile nav, scroll reveal, sticky header
+- `index.html`: page structure and content
+- `styles.css`: styling (silver / red / black theme)
+- `script.js`: mobile nav, scroll reveal, sticky header
 
 ## Booking
 The booking section embeds the ChudiFit Strategy Call:
