@@ -44,8 +44,10 @@
     });
   }
 
-  // Staggered scroll reveals: delay each reveal by its position among reveal siblings
+  // Staggered scroll reveals: delay each reveal by its position among reveal siblings.
+  // The hero is skipped here; it runs its own load-in sequence via CSS (.hero .reveal delays).
   document.querySelectorAll(".reveal").forEach(function (el) {
+    if (el.closest(".hero")) return;
     var parent = el.parentElement;
     if (!parent) return;
     var sibs = Array.prototype.filter.call(parent.children, function (c) {
@@ -56,6 +58,18 @@
       el.style.transitionDelay = (i * 0.2).toFixed(3) + "s";
     }
   });
+
+  // Hero load-in: trigger the sequence shortly after the page is ready
+  var hero = document.querySelector(".hero");
+  if (hero && !reduceMotion) {
+    window.requestAnimationFrame(function () {
+      window.requestAnimationFrame(function () {
+        hero.classList.add("loaded");
+      });
+    });
+  } else if (hero) {
+    hero.classList.add("loaded");
+  }
 
   var reveals = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window && !reduceMotion) {
@@ -70,7 +84,10 @@
       },
       { threshold: 0.12, rootMargin: "0px 0px -50px 0px" }
     );
-    reveals.forEach(function (el) { io.observe(el); });
+    reveals.forEach(function (el) {
+      if (el.closest(".hero")) return; // hero runs its own load-in sequence
+      io.observe(el);
+    });
   } else {
     reveals.forEach(function (el) { el.classList.add("in"); });
   }
