@@ -274,6 +274,8 @@ html.night .hero-logo {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   margin-bottom: 22px;
+  line-height: 1.12;
+  padding-bottom: 0.1em;
 }
 
 .hero-sub {
@@ -412,6 +414,55 @@ section.theme-dark .feat-num { color: var(--red-bright); }
   color: var(--text); letter-spacing: -0.03em; line-height: 1;
 }
 .about-stat span { color: var(--text-muted); font-size: 0.98rem; line-height: 1.4; }
+
+/* === My Story === */
+.story-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 48px 0 16px;
+}
+.story-stat {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 26px 24px;
+}
+.story-stat strong {
+  display: block;
+  font-size: clamp(2.1rem, 3.4vw, 2.8rem);
+  font-weight: 800;
+  color: var(--red);
+  letter-spacing: -0.04em;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+.story-stat span {
+  color: var(--text-muted);
+  font-size: 0.94rem;
+  line-height: 1.45;
+}
+
+.story-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 16px;
+}
+.story-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: clamp(24px, 2.6vw, 32px);
+  transition: background 0.25s var(--ease), border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+}
+.story-card:hover {
+  border-color: var(--line-strong);
+  transform: translateY(-3px);
+  box-shadow: 0 14px 40px -20px rgba(0,0,0,0.18);
+}
+.story-card .feat-num { margin-bottom: 14px; }
+.story-card p { color: var(--text-muted); font-size: 1rem; line-height: 1.58; }
 
 /* === Process steps === */
 .steps { display: grid; gap: 18px; margin: 56px 0; }
@@ -561,7 +612,7 @@ section.theme-dark .feat-num { color: var(--red-bright); }
   .nav a.btn { margin-top: 12px; border-bottom: 0; text-align: center; }
   .nav-toggle { display: flex; }
   .split { grid-template-columns: 1fr; gap: 40px; }
-  .feat-grid, .dm-grid { grid-template-columns: 1fr; }
+  .feat-grid, .dm-grid, .story-stats, .story-grid { grid-template-columns: 1fr; }
   .step { grid-template-columns: 1fr; gap: 14px; padding: 28px; }
   .step-num { min-width: auto; }
   .hero-pills { flex-wrap: wrap; }
@@ -592,6 +643,8 @@ html:not(.night) section:not(.theme-dark) h2 {
   background: var(--steel-grad);
   -webkit-background-clip: text; background-clip: text;
   -webkit-text-fill-color: transparent;
+  line-height: 1.14;
+  padding-bottom: 0.12em;
 }
 
 /* brushed-silver hero */
@@ -604,6 +657,8 @@ html:not(.night) .hero {
 /* metallic cards with top sheen */
 html:not(.night) .feat,
 html:not(.night) .about-stat,
+html:not(.night) .story-stat,
+html:not(.night) .story-card,
 html:not(.night) .step,
 html:not(.night) .dm-bubble {
   background-image: linear-gradient(180deg, #ffffff 0%, #eceef2 100%);
@@ -611,6 +666,7 @@ html:not(.night) .dm-bubble {
   border-color: rgba(0,0,0,0.07);
 }
 html:not(.night) .feat:hover,
+html:not(.night) .story-card:hover,
 html:not(.night) .step:hover {
   background-image: linear-gradient(180deg, #ffffff 0%, #e4e7ec 100%);
 }
