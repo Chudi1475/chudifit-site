@@ -6,6 +6,15 @@
   var yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+  // Night mode toggle
+  var modeBtn = document.getElementById("modeToggle");
+  if (modeBtn) {
+    modeBtn.addEventListener("click", function () {
+      var on = document.documentElement.classList.toggle("night");
+      try { localStorage.setItem("chudifit-mode", on ? "night" : "day"); } catch (e) {}
+    });
+  }
+
   // Sticky header shadow
   var header = document.getElementById("header");
   var onScroll = function () {
