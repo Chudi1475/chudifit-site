@@ -27,8 +27,9 @@
   --ink: #000000;
 
   /* Silver shimmer */
-  --silver-grad: linear-gradient(180deg, #54545b 0%, #1d1d1f 75%);
+  --silver-grad: linear-gradient(176deg, #8c8f97 0%, #3a3b40 60%, #1d1d1f 100%);
   --silver-shimmer: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, transparent 50%);
+  --steel-grad: linear-gradient(178deg, #71747c 0%, #2a2b30 75%);
 
   --maxw: 1180px;
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
@@ -174,8 +175,21 @@ section.theme-dark .btn-ghost::after { color: var(--red-bright); }
 .brand {
   font-weight: 800; font-size: 1.18rem;
   letter-spacing: -0.02em; color: var(--text);
+  position: relative; padding-left: 13px;
 }
-.brand span { color: var(--red); }
+.brand::before {
+  content: ""; position: absolute; left: 0; top: 50%;
+  transform: translateY(-50%) skewX(-8deg);
+  width: 4px; height: 1.05em;
+  background: var(--red); border-radius: 1.5px;
+  box-shadow: 0 0 8px -1px rgba(215,0,21,0.6);
+}
+.brand span {
+  background: linear-gradient(180deg, #c9ccd2 0%, #6e7077 100%);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+html.night .brand span { background: linear-gradient(180deg, #ffffff 0%, #9a9aa3 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
 
 .nav { display: flex; align-items: center; gap: 26px; }
 .nav a {
@@ -233,6 +247,24 @@ html.night .mode-toggle .icon-sun { display: block; }
 }
 
 .hero-inner { position: relative; max-width: 1000px; margin: 0 auto; }
+
+.hero-logo {
+  width: clamp(150px, 21vw, 215px);
+  height: auto;
+  display: block;
+  margin: 0 auto 30px;
+  border-radius: 30px;
+  box-shadow:
+    0 26px 70px -24px rgba(0,0,0,0.55),
+    0 0 0 1px rgba(0,0,0,0.06),
+    0 0 50px -16px rgba(215, 0, 21, 0.35);
+}
+html.night .hero-logo {
+  box-shadow:
+    0 26px 70px -20px rgba(0,0,0,0.85),
+    0 0 0 1px rgba(255,255,255,0.08),
+    0 0 55px -14px rgba(255, 59, 48, 0.45);
+}
 
 .hero .eyebrow { font-size: 0.92rem; margin-bottom: 22px; }
 
@@ -540,6 +572,59 @@ section.theme-dark .feat-num { color: var(--red-bright); }
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; }
   .reveal { opacity: 1; transform: none; }
+}
+
+/* ============================================
+   EXTRA SILVER (day mode only)
+   ============================================ */
+html:not(.night) body {
+  background: linear-gradient(180deg, #eef0f3 0%, #d8dae0 100%);
+  background-attachment: fixed;
+}
+
+/* brushed-silver section bases (never touch the dark booking section) */
+html:not(.night) .section:not(.theme-dark) { background: linear-gradient(180deg, #e9ebef 0%, #e1e3e9 100%); }
+html:not(.night) .theme-soft.section { background: linear-gradient(180deg, #dfe1e7 0%, #d4d6dd 100%); }
+html:not(.night) .theme-white.section { background: linear-gradient(180deg, #fafbfc 0%, #eef0f3 100%); }
+
+/* metallic chrome headings */
+html:not(.night) section:not(.theme-dark) h2 {
+  background: var(--steel-grad);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* brushed-silver hero */
+html:not(.night) .hero {
+  background:
+    linear-gradient(115deg, rgba(255,255,255,0.5) 0%, transparent 30%, rgba(255,255,255,0.35) 55%, transparent 75%),
+    linear-gradient(180deg, #f1f2f5 0%, #d7d9df 100%);
+}
+
+/* metallic cards with top sheen */
+html:not(.night) .feat,
+html:not(.night) .about-stat,
+html:not(.night) .step,
+html:not(.night) .dm-bubble {
+  background-image: linear-gradient(180deg, #ffffff 0%, #eceef2 100%);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.95), 0 1px 3px rgba(40,50,70,0.06);
+  border-color: rgba(0,0,0,0.07);
+}
+html:not(.night) .feat:hover,
+html:not(.night) .step:hover {
+  background-image: linear-gradient(180deg, #ffffff 0%, #e4e7ec 100%);
+}
+
+/* brushed-silver trust bar */
+html:not(.night) .trustbar {
+  background: linear-gradient(180deg, #f5f6f8 0%, #e3e5eb 100%);
+  border-color: rgba(0,0,0,0.08);
+}
+
+/* metallic pills */
+html:not(.night) .hero-pills {
+  background: linear-gradient(180deg, rgba(255,255,255,0.75) 0%, rgba(224,226,232,0.65) 100%);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.9);
 }
 
 /* ============================================
