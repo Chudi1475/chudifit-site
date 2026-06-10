@@ -53,7 +53,7 @@
     });
     var i = sibs.indexOf(el);
     if (i > 0 && !reduceMotion) {
-      el.style.transitionDelay = (i * 0.085).toFixed(3) + "s";
+      el.style.transitionDelay = (i * 0.16).toFixed(3) + "s";
     }
   });
 
