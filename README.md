@@ -2,6 +2,10 @@
 
 Landing page for ChudiFit — 1-on-1 online coaching for tall athletes 6'2"+.
 
+## Live
+Deployed on GitHub Pages: https://chudi1475.github.io/chudifit-site/
+Pushing to `main` redeploys automatically (takes ~1 min).
+
 ## Stack
 Static site: plain HTML, CSS, JS. No build step. Calendly inline widget embedded for booking.
 
